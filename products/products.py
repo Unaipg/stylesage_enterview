@@ -1,4 +1,3 @@
-"""DOC"""
 import pandas as pd
 from decorators import timer
 
@@ -23,13 +22,13 @@ def get_most_discounted(data: any, *args, qty: int = 10, **kwargs) -> any:
     return data.sort_values('discount', ascending=False).head(qty)
 
 @timer()
-def count_by_color(data: any, regex: str, *args, **kwargs) -> int:
+def count_by_regex(data: any, regex: str, *args, **kwargs) -> int:
     data['red'] = data.color_name.str.contains(regex, case=False, na=False)
     return data[data['red']].count()[0]
 
 if __name__ == '__main__':
-    data = pd.read_csv('products.csv')
+    data = pd.read_csv('products/products.csv')
     print(get_most_expensive(data))
     print(get_cheaper(data, message='. Sorted again to test the standalone performance'))
     print(get_most_discounted(data))
-    print(count_by_color(data, r'\bred'))
+    print(count_by_regex(data, r'\bred'))
