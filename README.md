@@ -23,7 +23,7 @@ That file should be in the products folder before running the script.
 
 Tu run this program, from the project root run:
 ```bash
-python products/products.py {input}
+python products/products.py
 ```
 
 The command to run the tests is:
